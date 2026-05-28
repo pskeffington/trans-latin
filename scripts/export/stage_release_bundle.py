@@ -12,6 +12,7 @@ class ReleaseBundleStager:
 
     REQUIRED_SOURCES = [
         Path("outputs/review/trans_latin_review_packet.md"),
+        Path("outputs/review/trans_latin_status_report.md"),
         Path("audit/manifests/TLA-MANIFEST-2026-000001.json"),
         Path("docs/governance/auditability-standard.md"),
         Path("docs/architecture/shared-translator-spine.md"),
