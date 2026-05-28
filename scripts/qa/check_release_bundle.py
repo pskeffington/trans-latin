@@ -12,6 +12,7 @@ class ReleaseBundleChecker:
 
     REQUIRED_FILES = [
         "trans_latin_review_packet.md",
+        "trans_latin_status_report.md",
         "TLA-MANIFEST-2026-000001.json",
         "auditability-standard.md",
         "shared-translator-spine.md",
