@@ -1,0 +1,17 @@
+{
+  "event_id": "TLA-EVENT-2026-000001",
+  "event_type": "processing_import",
+  "object_type": "processing_handoff",
+  "object_id": "TLA-HANDOFF-2026-000001",
+  "actor": "Trans-Latin bootstrap pipeline",
+  "created_at_utc": "2026-05-27T00:00:00Z",
+  "summary": "Registered bootstrap processing handoff for the first Latin demo unit.",
+  "details": {
+    "unit_id": "TLA-DEMO-W01-P001-L001",
+    "review_status": "pending"
+  },
+  "audit": {
+    "event_checksum_sha256": "e84a70e9f1503032f634e89b3f6287c772234e4ad56f5528895dd3b1da98ec98",
+    "pipeline_version": "0.1.0"
+  }
+}
