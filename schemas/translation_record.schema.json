@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pskeffington/trans-latin/schemas/translation_record.schema.json",
+  "title": "Trans-Latin Translation Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "source_language",
+    "target_language",
+    "source_text",
+    "translation_text",
+    "translator",
+    "review_status",
+    "created_at_utc",
+    "audit"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^TL-[0-9]{4}-[0-9]{6}$"
+    },
+    "source_language": {
+      "type": "string",
+      "enum": ["la", "grc", "he", "en", "it", "fr", "de", "es", "pt", "unknown"]
+    },
+    "target_language": {
+      "type": "string",
+      "enum": ["la", "en"]
+    },
+    "source_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "translation_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "translator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["draft", "machine_checked", "human_reviewed", "approved", "rejected"]
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_reference": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "audit": {
+      "type": "object",
+      "required": ["pipeline_version", "checksum_sha256", "method", "reviewer"],
+      "properties": {
+        "pipeline_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checksum_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["manual", "llm_assisted", "rule_based", "hybrid"]
+        },
+        "reviewer": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
