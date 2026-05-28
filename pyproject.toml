@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trans-latin"
+version = "0.1.0"
+description = "Auditable Latin translation, witness, review, and export infrastructure."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  {name = "Paul Skeffington", email = "paulskeffington@gmail.com"}
+]
+license = {text = "Proprietary scholarly scaffold unless otherwise specified"}
+dependencies = [
+  "jsonschema==4.23.0"
+]
+
+[project.scripts]
+trans-latin-validate-records = "trans_latin.cli.validate_records:main"
+trans-latin-validate-units = "trans_latin.cli.validate_units:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.trans-latin]
+pipeline_version = "0.1.0"
+default_manifest = "audit/manifests/TLA-MANIFEST-2026-000001.json"
