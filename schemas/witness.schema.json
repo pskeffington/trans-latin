@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pskeffington/trans-latin/schemas/witness.schema.json",
+  "title": "Trans-Latin Witness",
+  "type": "object",
+  "required": ["witness_id", "collection_id", "title", "repository", "source_type", "rights_status", "source_links", "audit"],
+  "properties": {
+    "witness_id": {"type": "string", "pattern": "^[A-Z0-9]+$"},
+    "collection_id": {"type": "string", "pattern": "^[A-Z0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "minLength": 1},
+    "shelfmark": {"type": "string"},
+    "source_type": {"type": "string", "enum": ["manuscript", "printed_text", "inscription", "public_domain_text_sample", "other"]},
+    "rights_status": {"type": "string", "enum": ["public_domain", "link_only", "restricted", "unknown", "public_domain_text_sample"]},
+    "source_links": {"type": "array", "items": {"type": "string"}},
+    "folio_or_page_range": {"type": "string"},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "audit": {
+      "type": "object",
+      "required": ["created_at_utc", "pipeline_version", "checksum_sha256"],
+      "properties": {
+        "created_at_utc": {"type": "string", "format": "date-time"},
+        "updated_at_utc": {"type": "string", "format": "date-time"},
+        "pipeline_version": {"type": "string", "minLength": 1},
+        "checksum_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
