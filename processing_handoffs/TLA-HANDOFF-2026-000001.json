@@ -1,0 +1,66 @@
+{
+  "handoff_id": "TLA-HANDOFF-2026-000001",
+  "unit_id": "TLA-DEMO-W01-P001-L001",
+  "processor": {
+    "repo": "pskeffington/trans-language-processing",
+    "name": "latin_pipeline",
+    "version": "0.1.0",
+    "commit": "bootstrap",
+    "config": {
+      "normalization_policy": "lowercase_and_strip_terminal_punctuation_for_bootstrap"
+    }
+  },
+  "source_payload": {
+    "source_latin": "In principio erat Verbum.",
+    "normalized_latin": "in principio erat verbum",
+    "tokens": [
+      {
+        "surface": "In",
+        "lemma": "in",
+        "pos": "preposition",
+        "morphology": "takes ablative here",
+        "gloss": "in",
+        "confidence": 1.0
+      },
+      {
+        "surface": "principio",
+        "lemma": "principium",
+        "pos": "noun",
+        "morphology": "ablative singular neuter",
+        "gloss": "beginning",
+        "confidence": 0.95
+      },
+      {
+        "surface": "erat",
+        "lemma": "sum",
+        "pos": "verb",
+        "morphology": "imperfect active indicative third singular",
+        "gloss": "was",
+        "confidence": 0.95
+      },
+      {
+        "surface": "Verbum",
+        "lemma": "verbum",
+        "pos": "noun",
+        "morphology": "nominative singular neuter",
+        "gloss": "word",
+        "confidence": 0.95
+      }
+    ],
+    "warnings": []
+  },
+  "accepted_fields": [
+    "normalized_latin",
+    "tokens"
+  ],
+  "rejected_fields": [],
+  "created_at_utc": "2026-05-27T00:00:00Z",
+  "reviewer": null,
+  "review_status": "pending",
+  "audit": {
+    "payload_checksum_sha256": "c265935a8b708f8f71dd6f0966b4f889dccd8182a23f3fdd569a441750784a63",
+    "handoff_checksum_sha256": "e43c6baf5267465a0e529cb912bc02c584221f7d86aca575c2feb019b67b831b",
+    "pipeline_version": "0.1.0",
+    "notes": "Bootstrap handoff record for audit trail validation."
+  }
+}
