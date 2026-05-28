@@ -37,7 +37,12 @@ jobs:
           cp docs/governance/auditability-standard.md outputs/releases/trans-latin-audit-bundle/
           cp docs/architecture/shared-translator-spine.md outputs/releases/trans-latin-audit-bundle/
           cp docs/architecture/language-processing-repo-boundary.md outputs/releases/trans-latin-audit-bundle/
-          tar -czf outputs/releases/trans-latin-audit-bundle.tar.gz -C outputs/releases trans-latin-audit-bundle
+
+      - name: Check release bundle
+        run: python scripts/qa/check_release_bundle.py
+
+      - name: Archive release artifacts
+        run: tar -czf outputs/releases/trans-latin-audit-bundle.tar.gz -C outputs/releases trans-latin-audit-bundle
 
       - name: Upload release artifact bundle
         uses: actions/upload-artifact@v4
