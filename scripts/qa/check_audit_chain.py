@@ -17,6 +17,8 @@ from typing import Any
 class AuditChainChecker:
     """Checks cross-object consistency for the audit chain."""
 
+    REVIEWED_TOKEN_KEYS = ["surface", "lemma", "pos", "morphology", "gloss"]
+
     def __init__(
         self,
         translations_dir: Path,
@@ -41,9 +43,30 @@ class AuditChainChecker:
                 objects[object_id] = obj
         return objects
 
-    @staticmethod
-    def _values_match(left: Any, right: Any) -> bool:
-        return left == right
+    @classmethod
+    def _normalize_for_reviewed_unit(cls, field: str, value: Any) -> Any:
+        """Reduce processor output to the accepted scholarly unit shape.
+
+        Processor payloads may include operational metadata such as confidence
+        scores. Reviewed translation units intentionally keep only the accepted
+        scholarly token fields.
+        """
+
+        if field != "tokens" or not isinstance(value, list):
+            return value
+        normalized_tokens: list[dict[str, Any]] = []
+        for token in value:
+            if not isinstance(token, dict):
+                normalized_tokens.append(token)
+                continue
+            normalized_tokens.append(
+                {key: token.get(key, "") for key in cls.REVIEWED_TOKEN_KEYS if key in token}
+            )
+        return normalized_tokens
+
+    @classmethod
+    def _values_match(cls, field: str, left: Any, right: Any) -> bool:
+        return cls._normalize_for_reviewed_unit(field, left) == cls._normalize_for_reviewed_unit(field, right)
 
     def _check_accepted_fields(
         self,
@@ -71,7 +94,7 @@ class AuditChainChecker:
             if unit_field not in unit:
                 errors.append(f"{handoff_id}: linked unit missing accepted field: {unit_field}")
                 continue
-            if not self._values_match(payload[field], unit[unit_field]):
+            if not self._values_match(field, payload[field], unit[unit_field]):
                 errors.append(
                     f"{handoff_id}: accepted field {field} does not match linked unit field {unit_field}"
                 )
