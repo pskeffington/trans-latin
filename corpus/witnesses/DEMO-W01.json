@@ -1,0 +1,19 @@
+{
+  "witness_id": "W01",
+  "collection_id": "DEMO",
+  "title": "Bootstrap Latin Vulgate phrase sample",
+  "repository": "Trans-Latin internal bootstrap sample",
+  "shelfmark": "DEMO-W01",
+  "source_type": "public_domain_text_sample",
+  "rights_status": "public_domain_text_sample",
+  "source_links": [],
+  "folio_or_page_range": "P001",
+  "notes": [
+    "Bootstrap witness record for production audit spine validation."
+  ],
+  "audit": {
+    "created_at_utc": "2026-05-27T00:00:00Z",
+    "pipeline_version": "0.1.0",
+    "checksum_sha256": "d931018b1120c30075915c4014ba955c2fddc2e5a8700b898acf3fceda37bfdd"
+  }
+}
