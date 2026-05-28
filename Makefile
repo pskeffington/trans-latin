@@ -1,10 +1,13 @@
-.PHONY: qa audit witnesses translation-records latin-units processing-handoffs audit-events audit-chain review-packet audit-manifest release-bundle unit-ids rights-check required-dirs release-check
+.PHONY: qa audit package-smoke witnesses translation-records latin-units processing-handoffs audit-events audit-chain review-packet audit-manifest release-bundle unit-ids rights-check required-dirs release-check
 
 PYTHON ?= python
 
 qa: audit
 
-audit: witnesses translation-records latin-units processing-handoffs audit-events audit-chain unit-ids rights-check required-dirs review-packet audit-manifest
+audit: package-smoke witnesses translation-records latin-units processing-handoffs audit-events audit-chain unit-ids rights-check required-dirs review-packet audit-manifest
+
+package-smoke:
+	PYTHONPATH=src $(PYTHON) scripts/qa/check_package_smoke.py
 
 witnesses:
 	$(PYTHON) scripts/qa/validate_witnesses.py
