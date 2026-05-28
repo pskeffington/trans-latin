@@ -1,10 +1,10 @@
-.PHONY: qa audit translation-records latin-units processing-handoffs audit-events unit-ids rights-check required-dirs release-check
+.PHONY: qa audit translation-records latin-units processing-handoffs audit-events audit-chain unit-ids rights-check required-dirs release-check
 
 PYTHON ?= python
 
 qa: audit
 
-audit: translation-records latin-units processing-handoffs audit-events unit-ids rights-check required-dirs
+audit: translation-records latin-units processing-handoffs audit-events audit-chain unit-ids rights-check required-dirs
 
 translation-records:
 	$(PYTHON) scripts/validate_translation_records.py
@@ -17,6 +17,9 @@ processing-handoffs:
 
 audit-events:
 	$(PYTHON) scripts/qa/validate_audit_events.py
+
+audit-chain:
+	$(PYTHON) scripts/qa/check_audit_chain.py
 
 unit-ids:
 	$(PYTHON) scripts/qa/check_unit_ids.py
