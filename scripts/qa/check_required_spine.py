@@ -23,6 +23,8 @@ class RequiredSpineChecker:
         "scripts/export",
         "translations",
         "records",
+        "processing_handoffs",
+        "audit/events",
         "metadata",
         "corpus/registry",
         "corpus/witnesses",
@@ -42,10 +44,18 @@ class RequiredSpineChecker:
         "requirements.txt",
         "schemas/translation_record.schema.json",
         "schemas/latin_translation_unit.schema.json",
+        "schemas/processing_handoff.schema.json",
+        "schemas/audit_event.schema.json",
         "scripts/validate_translation_records.py",
         "scripts/qa/validate_latin_translation_units.py",
+        "scripts/qa/validate_processing_handoffs.py",
+        "scripts/qa/validate_audit_events.py",
+        "scripts/qa/check_audit_chain.py",
         "docs/architecture/shared-translator-spine.md",
+        "docs/architecture/language-processing-repo-boundary.md",
         "docs/governance/auditability-standard.md",
+        "docs/methodology/latin_transcription_policy.md",
+        "docs/methodology/latin_normalization_policy.md",
     ]
 
     def __init__(self, root: Path) -> None:
