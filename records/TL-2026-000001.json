@@ -1,0 +1,18 @@
+{
+  "record_id": "TL-2026-000001",
+  "source_language": "la",
+  "target_language": "en",
+  "source_text": "In principio erat Verbum.",
+  "translation_text": "In the beginning was the Word.",
+  "translator": "Trans-Latin bootstrap pipeline",
+  "review_status": "draft",
+  "created_at_utc": "2026-05-27T00:00:00Z",
+  "source_reference": "John 1:1, Latin Vulgate phrase sample for pipeline validation",
+  "notes": "Bootstrap record used to prove the live audit validator and checksum path.",
+  "audit": {
+    "pipeline_version": "0.1.0",
+    "checksum_sha256": "4f80c8115df6b9b940198de79fd529252ba9a6d173b261806adb8d1466c9559a",
+    "method": "manual",
+    "reviewer": "pending"
+  }
+}
