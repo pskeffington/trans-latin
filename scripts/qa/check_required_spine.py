@@ -45,6 +45,9 @@ class RequiredSpineChecker:
     ]
 
     REQUIRED_FILES = [
+        "README.md",
+        "ECOSYSTEM.md",
+        "ROADMAP.md",
         "Makefile",
         "pyproject.toml",
         "requirements.txt",
@@ -71,6 +74,7 @@ class RequiredSpineChecker:
         "scripts/qa/check_audit_chain.py",
         "scripts/qa/check_release_bundle.py",
         "scripts/qa/check_package_smoke.py",
+        "scripts/qa/generate_status_report.py",
         "scripts/export/generate_audit_manifest.py",
         "scripts/export/export_review_packet.py",
         "scripts/export/stage_release_bundle.py",
