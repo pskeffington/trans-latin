@@ -1,4 +1,4 @@
-.PHONY: qa audit witnesses translation-records latin-units processing-handoffs audit-events audit-chain review-packet audit-manifest unit-ids rights-check required-dirs release-check
+.PHONY: qa audit witnesses translation-records latin-units processing-handoffs audit-events audit-chain review-packet audit-manifest release-bundle unit-ids rights-check required-dirs release-check
 
 PYTHON ?= python
 
@@ -31,6 +31,10 @@ audit-manifest:
 	$(PYTHON) scripts/export/generate_audit_manifest.py
 	$(PYTHON) scripts/qa/validate_audit_manifest.py
 
+release-bundle: audit
+	$(PYTHON) scripts/export/stage_release_bundle.py
+	$(PYTHON) scripts/qa/check_release_bundle.py
+
 unit-ids:
 	$(PYTHON) scripts/qa/check_unit_ids.py
 
@@ -40,4 +44,4 @@ rights-check:
 required-dirs:
 	$(PYTHON) scripts/qa/check_required_spine.py
 
-release-check: audit
+release-check: release-bundle
