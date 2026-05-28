@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pskeffington/trans-latin/schemas/audit_event.schema.json",
+  "title": "Trans-Latin Audit Event",
+  "type": "object",
+  "required": ["event_id", "event_type", "object_type", "object_id", "actor", "created_at_utc", "summary", "audit"],
+  "properties": {
+    "event_id": {"type": "string", "pattern": "^TLA-EVENT-[0-9]{4}-[0-9]{6}$"},
+    "event_type": {"type": "string", "enum": ["created", "validated", "reviewed", "approved", "rejected", "superseded", "exported", "processing_import", "policy_update"]},
+    "object_type": {"type": "string", "enum": ["translation_record", "latin_translation_unit", "processing_handoff", "policy_document", "export_artifact", "repository"]},
+    "object_id": {"type": "string", "minLength": 1},
+    "actor": {"type": "string", "minLength": 1},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "summary": {"type": "string", "minLength": 1},
+    "details": {"type": "object"},
+    "audit": {
+      "type": "object",
+      "required": ["event_checksum_sha256", "pipeline_version"],
+      "properties": {
+        "event_checksum_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "pipeline_version": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
