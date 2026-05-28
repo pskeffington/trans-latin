@@ -1,0 +1,58 @@
+{
+  "unit_id": "TLA-DEMO-W01-P001-L001",
+  "collection_id": "DEMO",
+  "witness_id": "W01",
+  "line_reference": "P001-L001",
+  "source_latin": "In principio erat Verbum.",
+  "normalized_latin": "in principio erat verbum",
+  "tokens": [
+    {
+      "surface": "In",
+      "lemma": "in",
+      "pos": "preposition",
+      "morphology": "takes ablative here",
+      "gloss": "in"
+    },
+    {
+      "surface": "principio",
+      "lemma": "principium",
+      "pos": "noun",
+      "morphology": "ablative singular neuter",
+      "gloss": "beginning"
+    },
+    {
+      "surface": "erat",
+      "lemma": "sum",
+      "pos": "verb",
+      "morphology": "imperfect active indicative third singular",
+      "gloss": "was"
+    },
+    {
+      "surface": "Verbum",
+      "lemma": "verbum",
+      "pos": "noun",
+      "morphology": "nominative singular neuter",
+      "gloss": "word"
+    }
+  ],
+  "word_by_word_gloss": "In beginning was Word",
+  "literal_translation": "In beginning was Word.",
+  "interpretive_translation": "In the beginning was the Word.",
+  "uncertainty_flags": [],
+  "apparatus_links": [],
+  "notes": [
+    "Bootstrap Latin translation unit for validator and pipeline parity."
+  ],
+  "translation_status": "draft",
+  "reviewer": null,
+  "audit": {
+    "pipeline_version": "0.1.0",
+    "checksum_sha256": "a799190de725e16c9cfdcbfd6bc3e323c9a85575a6b03dca15f8ab42e26c1554",
+    "method": "manual",
+    "created_at_utc": "2026-05-27T00:00:00Z",
+    "validation_status": "pending",
+    "source_reference": "John 1:1, Latin Vulgate phrase sample for translation-unit validation",
+    "source_rights_status": "public_domain_text_sample",
+    "normalization_policy": "lowercase_and_strip_terminal_punctuation_for_bootstrap"
+  }
+}
