@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pskeffington/trans-latin/schemas/translation_session.schema.json",
+  "title": "Trans-Latin Translation Session",
+  "type": "object",
+  "required": ["session_id", "actor", "started_at_utc", "target_units", "actions", "audit"],
+  "properties": {
+    "session_id": {"type": "string", "pattern": "^TLA-SESSION-[0-9]{4}-[0-9]{6}$"},
+    "actor": {"type": "string", "minLength": 1},
+    "started_at_utc": {"type": "string", "format": "date-time"},
+    "completed_at_utc": {"type": ["string", "null"], "format": "date-time"},
+    "source_context": {
+      "type": "object",
+      "properties": {
+        "collection_id": {"type": "string"},
+        "witness_id": {"type": "string"},
+        "source_reference": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "target_units": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^TLA-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+$"}
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action_id", "action_type", "object_type", "object_id", "created_at_utc", "summary"],
+        "properties": {
+          "action_id": {"type": "string", "pattern": "^ACT-[0-9]{6}$"},
+          "action_type": {"type": "string", "enum": ["witness_selected", "source_captured", "source_normalized", "tokens_generated", "processing_handoff_created", "field_accepted", "field_rejected", "literal_translation_created", "interpretive_translation_created", "note_added", "review_status_changed", "audit_event_created", "review_packet_exported", "status_report_exported"]},
+          "object_type": {"type": "string", "enum": ["witness", "translation_record", "latin_translation_unit", "processing_handoff", "audit_event", "review_packet", "status_report", "repository"]},
+          "object_id": {"type": "string", "minLength": 1},
+          "before_checksum_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "after_checksum_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "created_at_utc": {"type": "string", "format": "date-time"},
+          "summary": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "audit": {
+      "type": "object",
+      "required": ["session_checksum_sha256", "pipeline_version"],
+      "properties": {
+        "session_checksum_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "pipeline_version": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
