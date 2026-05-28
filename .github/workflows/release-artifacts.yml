@@ -1,0 +1,46 @@
+name: Release Artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build-release-artifacts:
+    name: Build release artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+
+      - name: Run full QA
+        run: make qa
+
+      - name: Stage release artifacts
+        run: |
+          mkdir -p outputs/releases/trans-latin-audit-bundle
+          cp outputs/review/trans_latin_review_packet.md outputs/releases/trans-latin-audit-bundle/
+          cp audit/manifests/TLA-MANIFEST-2026-000001.json outputs/releases/trans-latin-audit-bundle/
+          cp docs/governance/auditability-standard.md outputs/releases/trans-latin-audit-bundle/
+          cp docs/architecture/shared-translator-spine.md outputs/releases/trans-latin-audit-bundle/
+          cp docs/architecture/language-processing-repo-boundary.md outputs/releases/trans-latin-audit-bundle/
+          tar -czf outputs/releases/trans-latin-audit-bundle.tar.gz -C outputs/releases trans-latin-audit-bundle
+
+      - name: Upload release artifact bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: trans-latin-audit-bundle
+          path: outputs/releases/trans-latin-audit-bundle.tar.gz
