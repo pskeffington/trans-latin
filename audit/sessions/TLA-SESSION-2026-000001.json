@@ -1,0 +1,80 @@
+{
+  "session_id": "TLA-SESSION-2026-000001",
+  "actor": "Trans-Latin bootstrap pipeline",
+  "started_at_utc": "2026-05-27T00:00:00Z",
+  "completed_at_utc": "2026-05-27T00:05:00Z",
+  "source_context": {
+    "collection_id": "DEMO",
+    "witness_id": "W01",
+    "source_reference": "John 1:1, Latin Vulgate phrase sample"
+  },
+  "target_units": [
+    "TLA-DEMO-W01-P001-L001"
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-000001",
+      "action_type": "witness_selected",
+      "object_type": "witness",
+      "object_id": "DEMO-W01",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "d931018b1120c30075915c4014ba955c2fddc2e5a8700b898acf3fceda37bfdd",
+      "created_at_utc": "2026-05-27T00:00:30Z",
+      "summary": "Selected bootstrap Latin witness DEMO-W01."
+    },
+    {
+      "action_id": "ACT-000002",
+      "action_type": "processing_handoff_created",
+      "object_type": "processing_handoff",
+      "object_id": "TLA-HANDOFF-2026-000001",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "e43c6baf5267465a0e529cb912bc02c584221f7d86aca575c2feb019b67b831b",
+      "created_at_utc": "2026-05-27T00:01:30Z",
+      "summary": "Created bootstrap processing handoff for normalized Latin and token output."
+    },
+    {
+      "action_id": "ACT-000003",
+      "action_type": "field_accepted",
+      "object_type": "latin_translation_unit",
+      "object_id": "TLA-DEMO-W01-P001-L001",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "a799190de725e16c9cfdcbfd6bc3e323c9a85575a6b03dca15f8ab42e26c1554",
+      "created_at_utc": "2026-05-27T00:02:30Z",
+      "summary": "Accepted normalized Latin and token fields into the bootstrap translation unit."
+    },
+    {
+      "action_id": "ACT-000004",
+      "action_type": "literal_translation_created",
+      "object_type": "latin_translation_unit",
+      "object_id": "TLA-DEMO-W01-P001-L001",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "a799190de725e16c9cfdcbfd6bc3e323c9a85575a6b03dca15f8ab42e26c1554",
+      "created_at_utc": "2026-05-27T00:03:00Z",
+      "summary": "Recorded literal translation for the bootstrap unit."
+    },
+    {
+      "action_id": "ACT-000005",
+      "action_type": "interpretive_translation_created",
+      "object_type": "latin_translation_unit",
+      "object_id": "TLA-DEMO-W01-P001-L001",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "a799190de725e16c9cfdcbfd6bc3e323c9a85575a6b03dca15f8ab42e26c1554",
+      "created_at_utc": "2026-05-27T00:03:30Z",
+      "summary": "Recorded interpretive translation for the bootstrap unit."
+    },
+    {
+      "action_id": "ACT-000006",
+      "action_type": "audit_event_created",
+      "object_type": "audit_event",
+      "object_id": "TLA-EVENT-2026-000001",
+      "before_checksum_sha256": null,
+      "after_checksum_sha256": "e84a70e9f1503032f634e89b3f6287c772234e4ad56f5528895dd3b1da98ec98",
+      "created_at_utc": "2026-05-27T00:04:00Z",
+      "summary": "Created audit event linking the bootstrap processing handoff to the audit ledger."
+    }
+  ],
+  "audit": {
+    "session_checksum_sha256": "d95d31152a105271085c3c959540216e5dd4141cfddad1c31a46c832a6787b89",
+    "pipeline_version": "0.1.0"
+  }
+}
