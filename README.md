@@ -4,6 +4,28 @@ Auditable Latin translation, witness, review, and release infrastructure for the
 
 `trans-latin` is the scholarly translator layer. It preserves source provenance, witness identity, reviewed Latin translation units, processing handoffs, audit events, review packets, audit manifests, and release bundles. Mechanical language processing should live in a separate processing repository and enter this repo through documented handoff records.
 
+## Current ecosystem update — 2026-06-28
+
+`trans-latin` remains the accepted scholarly-record and audit-truth layer for Latin work while the shared `trans` processing package has moved into a bounded handoff architecture. The current operating boundary is:
+
+```text
+processing engines and bounded handoffs
+  -> trans-latin processing_handoffs/
+  -> accepted or rejected scholarly fields
+  -> audit event
+  -> review packet
+  -> release manifest
+```
+
+For the five-repo translator ecosystem, this means `trans-latin` should treat outputs from `pskeffington/trans` as processor evidence only. Processor output is not automatically accepted translation truth. It must enter through documented processing handoff records and then be accepted, rejected, or superseded through the Latin audit chain.
+
+Current documentation posture:
+
+- keep `trans-latin` as the scholarly Latin authority
+- keep mechanical normalization, tokenization, morphology, lexicon lookup, and batch processing outside this repo unless recorded as handoff evidence
+- preserve witness-chain IDs, audit events, review packets, release manifests, and rights-sensitive blocking
+- do not import raw source images, OCR dumps, page screenshots, private source bodies, credentials, or unbounded processor payloads
+
 ## Status
 
 Production-shaped scaffold: active audit, QA, release, and packaging spine.
